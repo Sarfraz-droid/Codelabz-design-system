@@ -9,4 +9,4 @@ export default {
 
 const Template = (args) => <EditProfile {...args} />;
 
-export const Primary = Template.bind({});
+export const Card = Template.bind({});

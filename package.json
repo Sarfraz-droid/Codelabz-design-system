@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.1.2",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",

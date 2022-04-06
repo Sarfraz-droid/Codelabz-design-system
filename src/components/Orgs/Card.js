@@ -8,17 +8,29 @@ import { theme } from "../../Theme/Layout";
 import LinkIcon from "@mui/icons-material/Link";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { CardContent, CardActions } from "@mui/material";
+import { Paper } from "@mui/material";
 import { StyledButton } from "../Button";
 
 function Orgs() {
   return (
     <Layout>
-      <StyledCard>
-        <CardContent>
+      <Paper
+        style={{
+          width: 250,
+          padding: 10,
+          borderRadius: 10,
+        }}
+        elevation={10}
+      >
+        <CardContent
+          style={{
+            padding: "6px",
+          }}
+        >
           <Stack
             spacing={2}
             style={{
-              padding: 5,
+              padding: 0,
             }}
           >
             <Avatar
@@ -99,7 +111,7 @@ function Orgs() {
             </StyledButton>
           </Stack>
         </CardActions>
-      </StyledCard>
+      </Paper>
     </Layout>
   );
 }

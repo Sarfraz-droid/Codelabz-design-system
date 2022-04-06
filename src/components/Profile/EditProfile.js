@@ -1,8 +1,18 @@
 import React from "react";
-import { Stack, Grid, Typography, Avatar, Divider } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import {
+  Stack,
+  Grid,
+  Typography,
+  Avatar,
+  Divider,
+  Paper,
+  TextField,
+} from "@mui/material";
+
 import { theme } from "../../Theme/Layout";
 import { StyledInputBase } from "../Input";
+import faker from "@faker-js/faker";
+import { StyledButton } from "../Button";
 
 const EditGrid = (props) => {
   return (
@@ -28,113 +38,133 @@ const EditGrid = (props) => {
 };
 
 function EditProfile() {
-  const orgs = [
+  // const orgs = [
+  //   {
+  //     label: "Country",
+  //     placeholder: "India",
+  //   },
+  //   {
+  //     label: "Description",
+  //     placeholder:
+  //       "Consequat voluptate eu non ullamco dolore proident magna sit consectetur dolor. Aute cillum sunt voluptate excepteur tempor.  ",
+  //     props: {
+  //       multiline: true,
+  //       rows: 5,
+  //       style: {
+  //         padding: "10px 15px",
+  //         width: "100%",
+  //       },
+  //     },
+  //   },
+  //   {
+  //     label: "Website",
+  //     placeholder: "sarfraz-alam.netlify.app",
+  //   },
+  //   {
+  //     label: "Github",
+  //     placeholder: "https://github.com/Sarfraz-droid",
+  //   },
+  // ];
+
+  const users = [
+    {
+      label: "Name",
+      value: "Sarfraz Alam",
+    },
+    {
+      label: "From",
+      value: "Delhi, India",
+    },
     {
       label: "Country",
-      placeholder: "India",
-    },
-    {
-      label: "Description",
-      placeholder:
-        "Consequat voluptate eu non ullamco dolore proident magna sit consectetur dolor. Aute cillum sunt voluptate excepteur tempor.  ",
-      props: {
-        multiline: true,
-        rows: 5,
-        style: {
-          padding: "10px 15px",
-          width: "100%",
-        },
-      },
-    },
-    {
-      label: "Website",
-      placeholder: "sarfraz-alam.netlify.app",
-    },
-    {
-      label: "Github",
-      placeholder: "https://github.com/Sarfraz-droid",
+      value: "India",
     },
   ];
 
   return (
-    <Grid
-      container
-      spacing={3}
-      alignItems="center"
-      justifyContent={"center"}
-      style={{
-        width: "70%",
-      }}
-    >
-      <Grid
-        item
-        container
-        direction={"row"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        <Grid item>
-          <Avatar
-            src="https://picsum.photos/600"
-            style={{
-              width: 200,
-              height: 200,
-            }}
-          />
-        </Grid>
-        <Grid item justifyContent={"flex-start"}>
-          <Stack
-            style={{
-              width: "100%",
-              padding: "20px",
-              paddingLeft: "30px",
-            }}
-            spacing={3}
-          >
-            <EditGrid label="Name" placeholder="Sarfraz Alam" />
-            <EditGrid label="Email" placeholder="Delhi, India" />
-          </Stack>
-        </Grid>
-      </Grid>
-      <Grid
-        item
+    <Stack direction="column">
+      <Paper
+        elevation={10}
         style={{
-          width: "90%",
+          borderRadius: 10,
         }}
-        alignItems={"center"}
-        justifyContent={"center"}
       >
-        {/* <StyledInputBase
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
-          lectus morbi volutpat, ac proin feugiat. Convallis iaculis morbi nec
-          in. Vulputate eu dictumst aenean quam sagittis risus in mauris. Odio
-          urna fringilla turpis quam gravida magna fringilla eu magnis."
+        <Typography
           style={{
-            border: "none",
-            padding: "10px 15px",
-            width: "100%",
-            marginTop: "20px",
+            padding: "20px",
+            opacity: 0.2,
           }}
-          multiline
-          rows={5}
-        /> */}
-        <Stack spacing={2}>
-          <Divider />
+          fontSize={26}
+          fontWeight={300}
+        >
+          Users
+        </Typography>
 
-          {orgs.map((org, index) => (
-            <EditGrid
-              key={index}
-              label={org.label}
-              placeholder={org.placeholder}
-              style={{
-                width: "100%",
-              }}
-              {...org.props}
-            />
+        <Stack
+          style={{
+            padding: "20px 50px",
+          }}
+        >
+          {users.map((user) => (
+            <Grid container>
+              <Grid item xs={4} alignContent={"center"} alignSelf={"center"}>
+                <Typography color={theme.palette.primary.blue} fontWeight={300}>
+                  {user.label}
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  type={"text"}
+                  placeholder={user.value}
+                  variant="standard"
+                  style={{
+                    padding: "10px 15px",
+                  }}
+                />
+              </Grid>
+            </Grid>
           ))}
+          <Grid
+            container
+            style={{
+              padding: "25px 50px",
+            }}
+          >
+            <Grid item xs={4} alignContent={"center"} alignSelf={"center"}>
+              <Avatar
+                src={faker.image.people(120, 120, true)}
+                style={{
+                  width: 100,
+                  height: 100,
+                  border: `3px solid ${theme.palette.primary.blue}`,
+                }}
+              />
+            </Grid>
+            <Grid item xs={8} alignContent={"center"} alignSelf={"center"}>
+              <Stack direction="column" justifyContent={"center"}>
+                <StyledButton
+                  variant="contained"
+                  style={{
+                    width: 130,
+                  }}
+                >
+                  Choose Photo
+                </StyledButton>
+                <Typography
+                  fontSize={10}
+                  style={{
+                    padding: "3px 5px",
+                    opacity: 0.2,
+                  }}
+                >
+                  No Photo Chosen
+                </Typography>
+              </Stack>
+            </Grid>
+          </Grid>
         </Stack>
-      </Grid>
-    </Grid>
+      </Paper>
+    </Stack>
   );
 }
 

@@ -1,16 +1,22 @@
 import React from "react";
-import { Stack, Grid, Typography, Avatar, Divider } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { Stack, Avatar, Typography } from "@mui/material";
+import LinkIcon from "@mui/icons-material/Link";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { theme } from "../../Theme/Layout";
-export default function General() {
-  const orgs = [
+import Paper from "@mui/material/Paper";
+import { Grid, Divider } from "@mui/material";
+import { faker } from "@faker-js/faker";
+import CakeIcon from "@mui/icons-material/Cake";
+
+function Details() {
+  const info = [
     {
       label: "Country",
       value: "India",
     },
     {
       label: "Website",
-      value: "sarfraz-alam.netlify.app",
+      value: "http://sarfraz-alam.netlify.app/",
     },
     {
       label: "Github",
@@ -19,121 +25,169 @@ export default function General() {
   ];
 
   return (
-    <Grid
-      container
-      spacing={3}
-      alignItems="center"
-      justifyContent={"center"}
-      style={{
-        width: "50%",
-      }}
-    >
-      <Grid
-        item
-        container
-        direction={"row"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
+    <React.Fragment>
+      <Grid container direction={"column"}>
         <Grid item>
-          <Avatar
-            src="https://picsum.photos/600"
+          <img
+            src={faker.image.abstract(1080, 320, true)}
+            alt=""
             style={{
-              width: 200,
-              height: 200,
+              width: "100%",
+              objectFit: "cover",
             }}
           />
         </Grid>
-        <Grid item justifyContent={"flex-start"}>
-          <Stack
+        <Grid
+          item
+          alignItems={"center"}
+          justifyContent={`center`}
+          direction={"row"}
+          style={{
+            width: "100%",
+          }}
+        >
+          <Paper
             style={{
-              width: "100%",
-              padding: "20px",
-              paddingLeft: "30px",
+              margin: "auto",
+              width: "70%",
+              marginTop: -200,
+              padding: "40px 20px",
             }}
+            elevation={10}
           >
-            <Typography fontWeight={200} fontSize={32}>
-              Sarfraz Alam
-            </Typography>
             <Stack
-              direction={"row"}
-              justifyContent={"center"}
+              direction="column"
               alignItems={"center"}
+              spacing={0}
               style={{
-                marginTop: "9px",
-                width: 100,
-                padding: "5px",
-                color: "white",
-                borderRadius: "25px",
-                backgroundColor: "#77D74A",
+                width: "100%",
+                marginTop: -100,
               }}
             >
-              <CheckCircleIcon fontSize="12px" />
-              <Typography
+              <Avatar
+                src={faker.image.people(120, 120, true)}
                 style={{
-                  marginLeft: "5px",
+                  width: 120,
+                  height: 120,
+                  border: `5px solid ${theme.palette.primary.dark}`,
                 }}
-                fontSize={12}
-                fontWeight={300}
+              />
+              <Typography
+                fontWeight={200}
+                style={{
+                  marginTop: 15,
+                }}
               >
-                Email Verified
+                Sarfraz Alam
               </Typography>
+              <Typography
+                fontWeight={400}
+                style={{
+                  opacity: 0.5,
+                }}
+                fontSize={10}
+              >
+                Delhi, India
+              </Typography>
+              <Typography
+                fontWeight={400}
+                style={{
+                  opacity: 0.5,
+                  padding: "20px 0px ",
+                }}
+                fontSize={10}
+              >
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignContent={`flex-end`}
+                  alignItems={`flex-end`}
+                  justifyContent={`flex-end`}
+                >
+                  <CakeIcon
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                  />
+                  <Typography fontSize={10}>Delhi, India</Typography>
+                </Stack>
+              </Typography>
+              <Typography
+                fontWeight={300}
+                fontSize={12}
+                color={theme.palette.primary.blue}
+                style={{
+                  width: "70%",
+                  margin: "auto",
+                  padding: "25px 0px ",
+                }}
+                textAlign={`center`}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
+                lectus morbi volutpat, ac proin feugiat. Convallis iaculis morbi
+                nec in. Vulputate eu dictumst aenean quam sagittis risus in
+                mauris. Odio urna fringilla turpis quam gravida magna fringilla
+                eu magnis.
+              </Typography>
+              <Divider
+                color={theme.palette.primary.blue}
+                style={{
+                  width: "70%",
+                  opacity: 0.2,
+                }}
+              />
+              <Stack
+                style={{
+                  width: "70%",
+                  padding: "20px 50px",
+                }}
+              >
+                {info.map((item) => (
+                  <Grid
+                    direction="row"
+                    container
+                    alignItems="center"
+                    justify="space-between"
+                    style={{
+                      width: "100%",
+                      padding: "9px 0px",
+                    }}
+                  >
+                    <Grid item xs={6}>
+                      <Typography
+                        fontWeight={300}
+                        color={theme.palette.primary.blue}
+                        style={{
+                          paddingLeft: 55,
+                        }}
+                        fontSize={14}
+                      >
+                        {item.label}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography
+                        fontWeight={300}
+                        color={theme.palette.primary.blue}
+                        fontSize={13}
+                        style={{
+                          opacity: 0.5,
+                          paddingLeft: 25,
+                        }}
+                      >
+                        {item.value}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                ))}
+              </Stack>
             </Stack>
-            <Typography
-              fontWeight={100}
-              style={{
-                marginTop: "15px",
-                paddingLeft: "10px",
-              }}
-            >
-              Delhi, India
-            </Typography>
-          </Stack>
+          </Paper>
         </Grid>
       </Grid>
-      <Grid item>
-        <Typography
-          style={{
-            padding: "20px",
-          }}
-          color={theme.palette.primary.dark}
-          fontWeight={300}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat
-          lectus morbi volutpat, ac proin feugiat. Convallis iaculis morbi nec
-          in. Vulputate eu dictumst aenean quam sagittis risus in mauris. Odio
-          urna fringilla turpis quam gravida magna fringilla eu magnis.
-        </Typography>
-        <Divider />
-        {orgs.map((org, index) => (
-          <Grid
-            container
-            spacing={3}
-            direction="row"
-            style={{
-              width: "100%",
-              padding: "10px",
-            }}
-          >
-            <Grid item sm={6}>
-              <Typography
-                style={{
-                  padding: "10px",
-                  paddingLeft: "20px",
-                }}
-                color={theme.palette.primary.dark}
-              >
-                {org.label}
-              </Typography>
-            </Grid>
-            <Grid item sm={6} alignContent={"center"} alignSelf={"center"}>
-              <Typography fontWeight={100} color={theme.palette.primary.light}>
-                {org.value}
-              </Typography>
-            </Grid>
-          </Grid>
-        ))}
-      </Grid>
-    </Grid>
+    </React.Fragment>
   );
 }
+
+export default Details;

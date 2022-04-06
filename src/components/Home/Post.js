@@ -16,8 +16,8 @@ import CommentTwoToneIcon from "@mui/icons-material/CommentTwoTone";
 const StyledCard = styled(Card)((props) => ({
   borderRadius: 10,
   boxShadow: "none",
-  backgroundColor: "#FAFCFE",
-  border: "1px solid #E5F1FF",
+  backgroundColor: "#FFFF",
+  border: "1px solid #A4A4A4",
 }));
 
 const StyledBox = styled(Box)((props) => ({
@@ -63,7 +63,7 @@ function Post() {
                 I made 100 more CSS loaders for your next project
               </Typography>
               <Typography
-                color={theme.palette.secondary.main}
+                color={theme.palette.primary.light}
                 fontWeight={500}
                 style={{
                   marginTop: 10,

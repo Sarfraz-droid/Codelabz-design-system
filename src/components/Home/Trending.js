@@ -14,25 +14,37 @@ import { ListItemButton } from "@mui/material";
 
 const StyledCard = styled(Card)((props) => ({
   borderRadius: 10,
-  width: 250,
+  width: 350,
   padding: 5,
   boxShadow: "0px 21px 36px rgba(15, 86, 179, 0.05)",
   backgroundColor: "#FAFCFE",
-  border: "1px solid #E5F1FF",
+  border: "1px solid #A4A4A4",
 }));
 
 const StyledListButton = styled(ListItemButton)((props) => ({
-  padding: 1,
+  padding: "10px 20px",
   borderRadius: 10,
-  paddingLeft: 12,
   color: theme.palette.primary.dark,
   "&:hover": {
-    backgroundColor: "#E5F1FF",
+    backgroundColor: "#E9EAEB",
   },
 }));
 
 function Trending() {
-  const tending = ["#css", "#javascript", "#react", "#nodejs", "#vuejs"];
+  const tending = [
+    {
+      title: "#CSS",
+      subheader: "100k+ Posts",
+    },
+    {
+      title: "#java",
+      subheader: "100k+ Posts",
+    },
+    {
+      title: "#HTML",
+      subheader: "100k+ Posts",
+    },
+  ];
 
   return (
     <Layout>
@@ -59,15 +71,18 @@ function Trending() {
                 }}
               >
                 <StyledListButton disableRipple>
-                  <Typography
-                    style={{
-                      padding: 3,
-                    }}
-                    fontWeight={300}
-                    fontSize={14}
-                  >
-                    {item}
-                  </Typography>
+                  <Stack>
+                    <Typography
+                      style={{
+                        padding: 3,
+                      }}
+                      fontWeight={600}
+                      fontSize={16}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography fontSize={12}>{item.subheader}</Typography>
+                  </Stack>
                 </StyledListButton>
               </ListItem>
             ))}
